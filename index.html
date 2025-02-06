@@ -1,2 +1,92 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Presentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffcccc;
+            text-align: center;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #fff;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+        }
+        .active {
+            display: flex;
+            animation: fadeIn 2s ease-in-out;
+        }
+        button {
+            position: absolute;
+            bottom: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="romantic_song.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="slide active" style="background-image: url('heart1.jpg');">
+        <h1 class="animate_animated animate_fadeInDown">Happy Valentine's Day, My Love!</h1>
+        <p class="animate_animated animate_fadeInUp">From the moment I met you, my heart knew you were the one...</p>
+    </div>
+    
+    <div class="slide" style="background-image: url('couple1.jpg');">
+        <p class="animate_animated animate_fadeIn">Every second with you feels like magic. You are my best friend, my happiness, my everything.</p>
+    </div>
+    
+    <div class="slide" style="background-image: url('love2.jpg');">
+        <p class="animate_animated animate_fadeIn">Through every high and low, I promise to love you more each day. You're the reason my heart beats.</p>
+    </div>
+    
+    <div class="slide" style="background-image: url('couple2.jpg');">
+        <p class="animate_animated animate_fadeIn">Your love completes me in ways I never knew were possible. Thank you for being mine.</p>
+    </div>
+    
+    <div class="slide" style="background-image: url('heart3.jpg');">
+        <p class="animate_animated animate_fadeIn">No matter what the future holds, my love for you will never fade. You're my forever.</p>
+    </div>
+    
+    <div class="slide" style="background-image: url('fireworks.jpg');">
+        <h1 class="animate_animated animate_zoomIn">I LOVE YOU!</h1>
+        <p class="animate_animated animate_fadeIn">Forever and always, my heart belongs to you. Happy Valentine's Day!</p>
+    </div>
+    
+    <button onclick="nextSlide()">Next</button>
+    
+    <script>
+        let slideIndex = 0;
+        let slides = document.querySelectorAll('.slide');
+        function nextSlide() {
+            slides[slideIndex].classList.remove('active');
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+        }
+    </script>
+</body>
 </html>
