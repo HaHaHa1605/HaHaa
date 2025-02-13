@@ -3,90 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Presentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Happy Valentine's Day</title>
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #ffcccc;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background: #ffcccb; /* dark pink background */
+            color: #fff;
             overflow: hidden;
         }
         .slide {
             display: none;
-            width: 100vw;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: #fff;
-            font-size: 24px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1511918984140-1b0c1e1e1e1e') no-repeat center center/cover;
+            text-align: center;
             padding: 20px;
-            background-size: cover;
-            background-position: center;
-            position: absolute;
+            box-sizing: border-box;
         }
-        .active {
-            display: flex;
-            animation: fadeIn 2s ease-in-out;
+        h1, h2, p {
+            animation: fadeIn 1s;
         }
-        button {
-            position: absolute;
-            bottom: 20px;
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            font-size: 1.5em;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .button {
+            margin-top: 20px;
             padding: 10px 20px;
-            font-size: 18px;
-            background-color: red;
-            color: white;
+            background: #fff;
+            color: #f00;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
-            border-radius: 10px;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="romantic_song.mp3" type="audio/mpeg">
-    </audio>
-    
-    <div class="slide active" style="background-image: url('heart1.jpg');">
-        <h1 class="animate_animated animate_fadeInDown">Happy Valentine's Day, My Love!</h1>
-        <p class="animate_animated animate_fadeInUp">From the moment I met you, my heart knew you were the one...</p>
+
+    <div class="slide" id="slide1">
+        <div class="envelope">
+    <div class="message" id="message">
+        <h1>💌</h1>
+        <p>Happy Valentine's Day,</p>
     </div>
-    
-    <div class="slide" style="background-image: url('couple1.jpg');">
-        <p class="animate_animated animate_fadeIn">Every second with you feels like magic. You are my best friend, my happiness, my everything.</p>
+</div>
+
+
     </div>
-    
-    <div class="slide" style="background-image: url('love2.jpg');">
-        <p class="animate_animated animate_fadeIn">Through every high and low, I promise to love you more each day. You're the reason my heart beats.</p>
+
+    <div class="slide" id="slide2">
+        <p>"From the moment we met, my heart has been yours.",
+        "Every day with you is a beautiful addition to my life's journey.",
+        "You make me laugh, you make me smile, and you make my heart sing.",
+        "This Valentine's Day, I want to ask you something special...",
+        "Will you be my Valentine? ❤"</p>
     </div>
-    
-    <div class="slide" style="background-image: url('couple2.jpg');">
-        <p class="animate_animated animate_fadeIn">Your love completes me in ways I never knew were possible. Thank you for being mine.</p>
+
+    <div class="slide" id="slide3">
+        <h2>Reasons Why I Love You</h2>
+        <ul>
+            <li style="animation-delay: 0.5s;">Your smile brightens my day</li>
+            <li style="animation-delay: 1s;">You understand me like no one else </li>
+            <li style="animation-delay: 1.5s;">Your hugs melts away all my worries</li>
+            <li style="animation-delay: 2s;">Your presence makes any place feel like home</li>
+            <li style="animation-delay: 2.5s;">I cherish the memories we create together big or small</li>
+        </ul>
     </div>
-    
-    <div class="slide" style="background-image: url('heart3.jpg');">
-        <p class="animate_animated animate_fadeIn">No matter what the future holds, my love for you will never fade. You're my forever.</p>
+
+    <div class="slide" id="slide4">
+        <h2>Forever and Always</h2>
+        <p>I love you!</p>
     </div>
-    
-    <div class="slide" style="background-image: url('fireworks.jpg');">
-        <h1 class="animate_animated animate_zoomIn">I LOVE YOU!</h1>
-        <p class="animate_animated animate_fadeIn">Forever and always, my heart belongs to you. Happy Valentine's Day!</p>
-    </div>
-    
-    <button onclick="nextSlide()">Next</button>
-    
+
     <script>
-        let slideIndex = 0;
-        let slides = document.querySelectorAll('.slide');
-        function nextSlide() {
-            slides[slideIndex].classList.remove('active');
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].classList.add('active');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides[currentSlide].style.display = 'none'; // Hide current slide
+            currentSlide = (index + totalSlides) % totalSlides; // Update current slide index
+            slides[currentSlide].style.display = 'block'; // Show new slide
         }
+
+        // Show the first slide
+        showSlide(currentSlide);
+
+        // Change slides every 5 seconds
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
     </script>
+
 </body>
 </html>
